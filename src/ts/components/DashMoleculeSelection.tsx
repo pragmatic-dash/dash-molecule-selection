@@ -51,14 +51,14 @@ class DashMoleculeSelection extends React.Component<Props, State> {
                     const status = document.getElementById('status');
                     if (selection.length < min_allowed_atoms) {
                         status && (status.innerText = `Select at least ${min_allowed_atoms} heavy atoms.`);
-                        setProps({});
+                        setProps({ selection: [], selectionWithHydrogen: [] });
                         return;
                     }
                     if (
                         selection.length >= Math.floor(this.ref.model.mMol.getAllAtoms_0() * max_allowed_atoms_percent)
                     ) {
                         status && (status.innerText = `Select up to ${max_allowed_atoms_percent*100}% of heavy atoms.`);
-                        setProps({});
+                        setProps({ selection: [], selectionWithHydrogen: [] });
                         return;
                     }
                     const queue = [selection[0]];
@@ -74,7 +74,7 @@ class DashMoleculeSelection extends React.Component<Props, State> {
                     }
                     if (selectedAtomsSet.size) {
                         status && (status.innerText = "Selected atoms need to be connected.");
-                        setProps({});
+                        setProps({ selection: [], selectionWithHydrogen: [] });
                         return;
                     }
                     status && (status.innerText = "Selected atoms successfully.");

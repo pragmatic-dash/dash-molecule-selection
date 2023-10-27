@@ -3,7 +3,7 @@ module DashMoleculeSelection
 using Dash
 
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
-const version = "1.0.0"
+const version = "1.0.1"
 
 include("jl/dashmoleculeselection.jl")
 include("jl/molecular.jl")
